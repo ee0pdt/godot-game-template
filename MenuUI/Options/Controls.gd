@@ -1,14 +1,17 @@
 extends MarginContainer
 
-onready var buttoncontainer = get_node("VBoxContainer/KeyBindings")
-onready var buttonscript = load("res://MenuUI/Options/KeyButton.gd")
+
+onready var button_container = get_node("VBoxContainer/KeyBindings")
+onready var button_script = load("res://MenuUI/Options/KeyButton.gd")
+
 
 var keybinds
 var buttons = {}
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	keybinds = Global.keybinds.duplicate()
+	
 	for key in keybinds.keys():
 		var hbox = HBoxContainer.new()
 		var label = Label.new()
@@ -27,7 +30,7 @@ func _ready():
 		else:
 			button.text = "Unassigned"
 		
-		button.set_script(buttonscript)
+		button.set_script(button_script)
 		button.key = key
 		button.value = button_value
 		button.menu = self
@@ -36,12 +39,14 @@ func _ready():
 		
 		hbox.add_child(label)
 		hbox.add_child(button)
-		buttoncontainer.add_child(hbox)
+		button_container.add_child(hbox)
 		
 		buttons[key] = button
 
+
 func change_bind(key, value):
 	keybinds[key] = value
+	
 	for k in keybinds.keys():
 		if k != key and value != null and keybinds[k] == value:
 			keybinds[k] = null
