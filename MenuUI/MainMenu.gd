@@ -18,3 +18,7 @@ func _ready():
 
 func _on_OptionsButton_pressed():
 	get_tree().change_scene("res://MenuUI/Options/Options.tscn")
+
+
+func _on_ExitButton_pressed():
+	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)

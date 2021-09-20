@@ -14,6 +14,10 @@ config/name="Game Template"
 run/main_scene="res://MenuUI/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Autoloads/Global.gd"
+
 [display]
 
 window/size/width=1920
