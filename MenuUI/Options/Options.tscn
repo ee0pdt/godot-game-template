@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://MenuUI/Options/Options.gd" type="Script" id=1]
 [ext_resource path="res://MenuUI/PrimaryButton.tres" type="StyleBox" id=2]
 [ext_resource path="res://MenuUI/ButtonFont48.tres" type="DynamicFont" id=3]
 [ext_resource path="res://MenuUI/PrimaryButtonHover.tres" type="StyleBox" id=4]
 [ext_resource path="res://MenuUI/MenuUI.tres" type="Theme" id=5]
+[ext_resource path="res://MenuUI/Options/Sound.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.105882, 0.105882, 0.105882, 1 )
@@ -117,6 +118,7 @@ margin_left = 40.0
 margin_top = 40.0
 margin_right = -40.0
 margin_bottom = -40.0
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -159,4 +161,26 @@ size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = ExtResource( 5 )
 
+[node name="Effects" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu"]
+margin_top = 154.0
+margin_right = 900.0
+margin_bottom = 211.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Effects"]
+margin_right = 200.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 200, 0 )
+custom_fonts/font = ExtResource( 3 )
+text = "MUSIC"
+
+[node name="EffectsVolume" type="HSlider" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Effects"]
+margin_left = 204.0
+margin_right = 900.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource( 5 )
+
 [connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Menu/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Music/MusicVolume" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound" method="_on_MusicVolume_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Effects/EffectsVolume" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound" method="_on_EffectsVolume_value_changed"]

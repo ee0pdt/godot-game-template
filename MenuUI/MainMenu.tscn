@@ -102,3 +102,5 @@ expand = true
 
 [connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Menu/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Menu/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Menu/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Menu/StartButton" to="." method="_on_StartButton_pressed"]
