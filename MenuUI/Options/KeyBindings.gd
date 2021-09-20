@@ -1,4 +1,4 @@
-extends MarginContainer
+extends VBoxContainer
 
 
 # Declare member variables here. Examples:
