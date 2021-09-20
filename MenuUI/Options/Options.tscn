@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://MenuUI/Options/Options.gd" type="Script" id=1]
 [ext_resource path="res://MenuUI/PrimaryButton.tres" type="StyleBox" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://MenuUI/MenuUI.tres" type="Theme" id=5]
 [ext_resource path="res://MenuUI/Options/Sound.gd" type="Script" id=6]
 [ext_resource path="res://MenuUI/Options/Graphics.gd" type="Script" id=7]
+[ext_resource path="res://MenuUI/Options/Panel.gd" type="Script" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.105882, 0.105882, 0.105882, 1 )
@@ -20,6 +21,7 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 5 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -59,9 +61,6 @@ rect_min_size = Vector2( 0, 100 )
 mouse_default_cursor_shape = 2
 theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 3 )
-disabled = true
-toggle_mode = true
-pressed = true
 text = "SOUND"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -213,6 +212,7 @@ step = 0.05
 value = 1.0
 
 [node name="Graphics" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 40.0
@@ -255,6 +255,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Controls" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -40.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Controls"]
+margin_right = 900.0
+margin_bottom = 900.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Controls/Menu"]
+margin_right = 900.0
+margin_bottom = 57.0
+custom_fonts/font = ExtResource( 3 )
+text = "CONTROLS"
+align = 1
+valign = 1
+
+[node name="FullScreen" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Controls/Menu"]
+margin_top = 77.0
+margin_right = 900.0
+margin_bottom = 77.0
+
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Menu/SoundButton" to="CanvasLayer/Panel" method="_on_SoundButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Menu/GraphicsButton" to="CanvasLayer/Panel" method="_on_GraphicsButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Menu/ControlsButton" to="CanvasLayer/Panel" method="_on_ControlsButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Menu/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Music/MusicVolume" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound" method="_on_MusicVolume_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Effects/EffectsVolume" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound" method="_on_EffectsVolume_value_changed"]

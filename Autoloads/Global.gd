@@ -16,3 +16,7 @@ func go_to_scene(scene):
 	
 	if error_code != OK:
 		print("ERROR: ", error_code, " whilst trying to load scene: ", scene)
+
+
+func toggle_full_screen():
+	OS.set_window_fullscreen(!OS.window_fullscreen)
