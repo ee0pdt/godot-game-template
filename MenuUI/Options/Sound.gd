@@ -7,3 +7,7 @@ func _on_MusicVolume_value_changed(value):
 
 func _on_EffectsVolume_value_changed(value):
 	Global.set_bus_volume("Effects", value)
+
+
+func _on_DialogVolume_value_changed(value):
+	Global.set_bus_volume("Dialog", value)

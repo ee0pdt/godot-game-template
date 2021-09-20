@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://MenuUI/Options/Options.gd" type="Script" id=1]
 [ext_resource path="res://MenuUI/PrimaryButton.tres" type="StyleBox" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://MenuUI/PrimaryButtonHover.tres" type="StyleBox" id=4]
 [ext_resource path="res://MenuUI/MenuUI.tres" type="Theme" id=5]
 [ext_resource path="res://MenuUI/Options/Sound.gd" type="Script" id=6]
+[ext_resource path="res://MenuUI/Options/Graphics.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.105882, 0.105882, 0.105882, 1 )
@@ -112,6 +113,7 @@ rect_min_size = Vector2( 980, 0 )
 custom_styles/panel = SubResource( 1 )
 
 [node name="Sound" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 40.0
@@ -147,19 +149,22 @@ margin_right = 900.0
 margin_bottom = 134.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Music"]
-margin_right = 200.0
+margin_right = 250.0
 margin_bottom = 57.0
-rect_min_size = Vector2( 200, 0 )
+rect_min_size = Vector2( 250, 0 )
 custom_fonts/font = ExtResource( 3 )
 text = "MUSIC"
 
 [node name="MusicVolume" type="HSlider" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Music"]
-margin_left = 204.0
+margin_left = 254.0
 margin_right = 900.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = ExtResource( 5 )
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="Effects" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu"]
 margin_top = 154.0
@@ -167,20 +172,91 @@ margin_right = 900.0
 margin_bottom = 211.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Effects"]
-margin_right = 200.0
+margin_right = 250.0
 margin_bottom = 57.0
-rect_min_size = Vector2( 200, 0 )
+rect_min_size = Vector2( 250, 0 )
 custom_fonts/font = ExtResource( 3 )
-text = "MUSIC"
+text = "EFFECTS"
 
 [node name="EffectsVolume" type="HSlider" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Effects"]
-margin_left = 204.0
+margin_left = 254.0
 margin_right = 900.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = ExtResource( 5 )
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Dialog" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu"]
+margin_top = 231.0
+margin_right = 900.0
+margin_bottom = 288.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Dialog"]
+margin_right = 250.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 250, 0 )
+custom_fonts/font = ExtResource( 3 )
+text = "DIALOG"
+
+[node name="DialogVolume" type="HSlider" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Dialog"]
+margin_left = 254.0
+margin_right = 900.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource( 5 )
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Graphics" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 40.0
+margin_top = 40.0
+margin_right = -40.0
+margin_bottom = -40.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics"]
+margin_right = 900.0
+margin_bottom = 900.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu"]
+margin_right = 900.0
+margin_bottom = 57.0
+custom_fonts/font = ExtResource( 3 )
+text = "GRAPHICS"
+align = 1
+valign = 1
+
+[node name="FullScreen" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu"]
+margin_top = 77.0
+margin_right = 900.0
+margin_bottom = 142.0
+
+[node name="FullScreenToggle" type="CheckBox" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu/FullScreen"]
+margin_right = 327.0
+margin_bottom = 65.0
+text = "FULL SCREEN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="pressed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Menu/MainMenuButton" to="." method="_on_MainMenuButton_pressed"]
 [connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Music/MusicVolume" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound" method="_on_MusicVolume_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Effects/EffectsVolume" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound" method="_on_EffectsVolume_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Dialog/DialogVolume" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound" method="_on_DialogVolume_value_changed"]
+[connection signal="toggled" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu/FullScreen/FullScreenToggle" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics" method="_on_CheckBox_toggled"]
