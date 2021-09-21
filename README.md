@@ -1,6 +1,8 @@
 # Godot Game Template
 A simple game template for making Godot games
 
+![The main menu of the Godot game template](Docs/MainMenu.png)
+
 ## What is this?
 
 This is a simple template for a game with menus enabled to allow the following:
@@ -21,6 +23,8 @@ Three main types of people:
 ## What settings are there?
 
 Basic settings that most games need:
+
+![The sound option menu](Docs/Sound.png)
 
 ### Sound
 
