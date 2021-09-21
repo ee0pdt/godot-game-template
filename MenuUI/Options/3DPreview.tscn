@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Game/CSGBox.gd" type="Script" id=1]
+
+[sub_resource type="PlaneMesh" id=3]
+
+[sub_resource type="ProceduralSky" id=2]
+
+[sub_resource type="Environment" id=4]
+background_mode = 2
+background_sky = SubResource( 2 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Game" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Game"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Game"]
+environment = SubResource( 4 )
+
+[node name="Camera" type="Camera" parent="Game"]
+transform = Transform( 1, 0, 0, 0, 0.929641, 0.368465, 0, -0.368465, 0.929641, 0, 1.40069, 3.59076 )
+fov = 33.75
+
+[node name="DirectionalLight" type="DirectionalLight" parent="Game"]
+transform = Transform( 0.928356, 0.122157, 0.351045, -0.371692, 0.305106, 0.876787, 0, -0.944451, 0.328652, 0, 1.35002, 0 )
+shadow_enabled = true
+
+[node name="CSGBox" type="CSGBox" parent="Game"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391965, 0 )
+width = 0.5
+height = 0.5
+depth = 0.5
+script = ExtResource( 1 )

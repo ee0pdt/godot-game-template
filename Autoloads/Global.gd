@@ -4,6 +4,8 @@ extends Node
 const config_path = "res://config.ini"
 var config_file
 
+
+## Defined here as defaults for HTML5 export
 var keybinds = {
 	"up": 87,
 	"down": 83,
@@ -11,13 +13,22 @@ var keybinds = {
 	"right": 68,
 }
 
+
+## Defined here as defaults for HTML5 export
 var sound = {
 	"music": 1.0,
 	"effects": 1.0,
 	"dialog": 1.0,
 }
 
+var graphics = {
+	"msaa": 0,
+}
+
+
 func _ready():
+	## In browser we can't read or write to file system
+	## I might look at cookie support instead here
 	if OS.get_name() != "HTML5":
 		_load_config()
 
@@ -43,6 +54,15 @@ func _load_config():
 				sound[key] = key_value
 			else:
 				sound[key] = null
+		
+		## Graphics Settings
+		for key in config_file.get_section_keys("graphics"):
+			var key_value = config_file.get_value("graphics", key)
+			
+			if str(key_value) != "":
+				graphics[key] = key_value
+			else:
+				graphics[key] = null
 		
 		set_game_binds()
 		set_bus_volumes()
@@ -83,6 +103,14 @@ func write_config():
 			config_file.set_value("sound", key, key_value)
 		else:
 			config_file.set_value("sound", key, "")
+	
+	for key in graphics.keys():
+		var key_value = graphics[key]
+		
+		if key_value != null:
+			config_file.set_value("graphics", key, key_value)
+		else:
+			config_file.set_value("graphics", key, "")
 		
 	config_file.save(config_path)
 
@@ -113,3 +141,20 @@ func go_to_scene(scene):
 
 func toggle_full_screen():
 	OS.set_window_fullscreen(!OS.window_fullscreen)
+
+
+func set_msaa_value(value):
+	graphics["msaa"] = value
+	write_config()
+	
+	match value:
+		0:
+			get_viewport().msaa = Viewport.MSAA_DISABLED
+		1:
+			get_viewport().msaa = Viewport.MSAA_2X
+		3:
+			get_viewport().msaa = Viewport.MSAA_4X
+		4:
+			get_viewport().msaa = Viewport.MSAA_8X
+		5:
+			get_viewport().msaa = Viewport.MSAA_16X

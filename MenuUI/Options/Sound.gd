@@ -22,7 +22,7 @@ func _on_EffectsVolume_value_changed(value):
 
 
 func _on_DialogVolume_value_changed(value):
-	_change_bus_volume("diaog", value)
+	_change_bus_volume("dialog", value)
 
 
 func _change_bus_volume(key, value):

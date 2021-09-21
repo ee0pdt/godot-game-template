@@ -19,7 +19,8 @@ func _ready():
 
 
 func _input(event):
-	if _state == States.PLAYING:
+	## Respond to key presses if not paused
+	if _state != States.PAUSED:
 		if event.is_action_pressed("pause"):
 			_pause()
 		

@@ -10,11 +10,11 @@
 
 [sub_resource type="PlaneMesh" id=1]
 
-[sub_resource type="ProceduralSky" id=2]
+[sub_resource type="ProceduralSky" id=5]
 
 [sub_resource type="Environment" id=3]
 background_mode = 2
-background_sky = SubResource( 2 )
+background_sky = SubResource( 5 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0, 0, 0.882353 )

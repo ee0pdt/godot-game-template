@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://MenuUI/Options/Options.gd" type="Script" id=1]
 [ext_resource path="res://MenuUI/PrimaryButton.tres" type="StyleBox" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://MenuUI/Options/Graphics.gd" type="Script" id=7]
 [ext_resource path="res://MenuUI/Options/Panel.gd" type="Script" id=8]
 [ext_resource path="res://MenuUI/Options/Controls.gd" type="Script" id=9]
+[ext_resource path="res://MenuUI/Options/3DPreview.tscn" type="PackedScene" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.105882, 0.105882, 0.105882, 1 )
@@ -255,6 +256,43 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MSAA" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu"]
+margin_top = 162.0
+margin_right = 900.0
+margin_bottom = 219.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu/MSAA"]
+margin_right = 250.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 250, 0 )
+custom_fonts/font = ExtResource( 3 )
+text = "MSAA"
+
+[node name="MSAA" type="HSlider" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu/MSAA"]
+margin_left = 254.0
+margin_right = 900.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource( 5 )
+max_value = 4.0
+rounded = true
+tick_count = 5
+ticks_on_borders = true
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu"]
+margin_top = 239.0
+margin_right = 900.0
+margin_bottom = 239.0
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu/ViewportContainer"]
+size = Vector2( 600, 600 )
+
+[node name="Spatial" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu/ViewportContainer/Viewport" instance=ExtResource( 11 )]
+
 [node name="Controls" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel"]
 visible = false
 anchor_right = 1.0
@@ -299,3 +337,4 @@ margin_bottom = 77.0
 [connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Effects/EffectsVolume" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound" method="_on_EffectsVolume_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Dialog/DialogVolume" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound" method="_on_DialogVolume_value_changed"]
 [connection signal="toggled" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu/FullScreen/FullScreenToggle" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics" method="_on_FullScreenToggle_toggled"]
+[connection signal="value_changed" from="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu/MSAA/MSAA" to="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics" method="_on_MSAA_value_changed"]
