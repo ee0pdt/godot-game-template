@@ -82,12 +82,12 @@ func _notification(what):
 
 ## Take the current bus volumes and apply them
 func set_bus_volumes():
-	Global.set_bus_volume("Music", sound["music"])
-	Global.set_bus_volume("Effects", sound["effects"])
-	Global.set_bus_volume("Dialog", sound["dialog"])
+	_set_bus_volume("Music", sound["music"])
+	_set_bus_volume("Effects", sound["effects"])
+	_set_bus_volume("Dialog", sound["dialog"])
 
 
-func set_bus_volume(bus, volume):
+func _set_bus_volume(bus, volume):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), linear2db(volume))
 
 
