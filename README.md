@@ -41,4 +41,4 @@ These are just to get you started, you can add more
 
 1. Remap keybindings for up, down, left and right
 
-NB: This is based off a YouTube tutorial by Gonkee. It is extensible and you can easily add you own key mappings
+NB: This is based off a [YouTube tutorial](https://youtu.be/I_Kzb-d-SvM) by Gonkee. It is extensible and you can easily add you own key mappings
