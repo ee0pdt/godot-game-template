@@ -3,6 +3,8 @@ extends Node2D
 
 func _ready():
 	get_tree().paused = false
+	if OS.get_name() == "HTML5":
+		$CanvasLayer/Panel/MarginContainer/HBoxContainer/Menu/ExitButton.hide()
 
 
 func _on_OptionsButton_pressed():

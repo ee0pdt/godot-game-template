@@ -3,11 +3,23 @@ extends Node
 
 const config_path = "res://config.ini"
 var config_file
-var keybinds = {}
-var sound = {}
+
+var keybinds = {
+	"up": 87,
+	"down": 83,
+	"left": 65,
+	"right": 68,
+}
+
+var sound = {
+	"music": 1.0,
+	"effects": 1.0,
+	"dialog": 1.0,
+}
 
 func _ready():
-	_load_config()
+	if OS.get_name() != "HTML5":
+		_load_config()
 
 
 func _load_config():
@@ -31,12 +43,12 @@ func _load_config():
 				sound[key] = key_value
 			else:
 				sound[key] = null
+		
+		set_game_binds()
+		set_bus_volumes()
 	else:
 		print("ERROR: Config file not found")
 		get_tree().quit()
-	
-	set_game_binds()
-	set_bus_volumes()
 
 
 ## Take the current keybinds and apply them
