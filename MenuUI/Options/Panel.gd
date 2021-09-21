@@ -3,7 +3,7 @@ extends Panel
 
 enum States {SOUND, GRAPHICS, CONTROLS}
 
-var state = States.SOUND
+var _state = States.SOUND
 
 onready var control_panel = $MarginContainer/HBoxContainer/Panel
 onready var menu = $MarginContainer/HBoxContainer/Menu
@@ -20,7 +20,7 @@ func _render():
 	menu.get_node("GraphicsButton").set_disabled(false)
 	menu.get_node("ControlsButton").set_disabled(false)
 	
-	match state:
+	match _state:
 		States.SOUND:
 			control_panel.get_node("Sound").show()
 			menu.get_node("SoundButton").set_disabled(true)
@@ -33,15 +33,15 @@ func _render():
 
 
 func _on_GraphicsButton_pressed():
-	state = States.GRAPHICS
+	_state = States.GRAPHICS
 	_render()
 
 
 func _on_ControlsButton_pressed():
-	state = States.CONTROLS
+	_state = States.CONTROLS
 	_render()
 
 
 func _on_SoundButton_pressed():
-	state = States.SOUND
+	_state = States.SOUND
 	_render()
