@@ -30,6 +30,7 @@ func _change_bus_volume(key, value):
 	save()
 
 
+## @todo - rewrite this to account better for the auto-save nature of things
 func save():
 	Global.sound = sound_settings.duplicate()
 	Global.set_bus_volumes()

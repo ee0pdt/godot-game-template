@@ -139,7 +139,7 @@ __meta__ = {
 margin_right = 900.0
 margin_bottom = 57.0
 custom_fonts/font = ExtResource( 3 )
-text = "SOUND"
+text = "Sound"
 align = 1
 valign = 1
 
@@ -153,7 +153,7 @@ margin_right = 250.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 250, 0 )
 custom_fonts/font = ExtResource( 3 )
-text = "MUSIC"
+text = "Music"
 
 [node name="MusicVolume" type="HSlider" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Music"]
 margin_left = 254.0
@@ -176,7 +176,7 @@ margin_right = 250.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 250, 0 )
 custom_fonts/font = ExtResource( 3 )
-text = "EFFECTS"
+text = "Effects"
 
 [node name="EffectsVolume" type="HSlider" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Effects"]
 margin_left = 254.0
@@ -199,7 +199,7 @@ margin_right = 250.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 250, 0 )
 custom_fonts/font = ExtResource( 3 )
-text = "DIALOG"
+text = "Dialog"
 
 [node name="DialogVolume" type="HSlider" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Sound/Menu/Dialog"]
 margin_left = 254.0
@@ -213,7 +213,6 @@ step = 0.05
 value = 1.0
 
 [node name="Graphics" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 40.0
@@ -239,7 +238,7 @@ __meta__ = {
 margin_right = 900.0
 margin_bottom = 57.0
 custom_fonts/font = ExtResource( 3 )
-text = "GRAPHICS"
+text = "Graphics"
 align = 1
 valign = 1
 
@@ -249,14 +248,15 @@ margin_right = 900.0
 margin_bottom = 142.0
 
 [node name="FullScreenToggle" type="CheckBox" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel/Graphics/Menu/FullScreen"]
-margin_right = 327.0
+margin_right = 262.0
 margin_bottom = 65.0
-text = "FULL SCREEN"
+text = "Full Screen"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Controls" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/HBoxContainer/Panel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 40.0
@@ -282,7 +282,7 @@ __meta__ = {
 margin_right = 900.0
 margin_bottom = 57.0
 custom_fonts/font = ExtResource( 3 )
-text = "CONTROLS"
+text = "Controls"
 align = 1
 valign = 1
 
